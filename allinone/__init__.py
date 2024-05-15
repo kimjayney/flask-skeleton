@@ -24,9 +24,9 @@ mail = Mail(app)
 from flask import Blueprint
 from flask_restx import Api, Resource, reqparse
 from allinone.restful.v1 import agent
-
 from flask_restx import Resource, Namespace 
-ns = Namespace(name='api/v1/db', description='MSSQL db agents related apis')
+
+ns = Namespace(name='db', description='MSSQL db agents related apis')
 ns.add_resource(agent.AgentHistoryShow, '/') 
 
 api = Api(title='Restx APIs',version='1.0',description='Flask Restx Apis Example')
