@@ -14,7 +14,8 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(APP_PATH, 'templates/')
-app = Flask(__name__, static_url_path='', template_folder=TEMPLATE_PATH)
+STATIC_PATH = os.path.join(APP_PATH, 'static/')
+app = Flask(__name__, static_folder=STATIC_PATH, template_folder=TEMPLATE_PATH)
 app.secret_key = 'development'
 app.config.from_object(Config)
 from flask_restx import Api, Resource, reqparse
@@ -33,9 +34,9 @@ api = Api(title='Restx APIs',version='1.0',description='Flask Restx Apis Example
 api.add_namespace(ns)
 api.init_app(app)
 
-@app.route('/')
+@app.route('/test')
 def index(): 
-    return render_template("test.html")
+    return render_template("login.html")
 
 @app.route('/blueprints')
 def get_bp_urls(): 
